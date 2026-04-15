@@ -3,8 +3,8 @@
 #include <string>
 #include <cmath>
 
-#define QTD_ESTUDANTES 3
-#define QTD_NOTAS 5
+#define QTD_ESTUDANTES 5
+#define QTD_NOTAS 3
 
 struct Estudante
 {
@@ -30,24 +30,34 @@ int main()
 {
     Estudante estudantes[QTD_ESTUDANTES];
 
-    Estudante estMaiorMedia;
+    Estudante* estMaiorMedia;
 
     for (int i = 0; i < QTD_ESTUDANTES; i++)
     {
-        Estudante est = estudantes[i];
+        Estudante* est = &estudantes[i];
         printf("Digite o nome do aluno %d: ", i + 1);
-        std::getline(std::cin >> std::ws, est.nome);
+        std::getline(std::cin >> std::ws, est->nome);
 
         for (int j = 0; j < QTD_NOTAS; j++)
         {
-            printf("Digite a nota %d do aluno %s: ", j + 1, est.nome.c_str());
-            std::cin >> est.notas[j];
+            printf("Digite a nota %d do aluno %s: ", j + 1, est->nome.c_str());
+            std::cin >> est->notas[j];
         }
 
-        est.media = obterMedia(est.notas);
+        est->media = obterMedia(est->notas);
 
-        est.situacao = (est.media >= 7) ? "Aprovado" : "Reprovado";
+        est->situacao = (est->media >= 7) ? "Aprovado" : "Reprovado";
+
+        if (i == 0) {
+            estMaiorMedia = est;
+        } else {
+            if (est->media > estMaiorMedia->media) {
+                estMaiorMedia = est;
+            }
+        }
     }
+
+    printf("%s -- %f\n", estMaiorMedia->nome.c_str(), estMaiorMedia->media);
 
     return 0;
 }
