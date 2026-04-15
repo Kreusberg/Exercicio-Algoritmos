@@ -57,7 +57,21 @@ int main()
         }
     }
 
-    printf("%s -- %f\n", estMaiorMedia->nome.c_str(), estMaiorMedia->media);
+    printf("'''\n ALUNO N1 N2 N3 MÉDIA SITUAÇÃO\n");
+    
+    for (int i = 0; i < QTD_ESTUDANTES; i++) {
+        double n1, n2, n3;
+        
+        n1 = estudantes[i].notas[0];
+        n2 = estudantes[i].notas[1];
+        n3 = estudantes[i].notas[2];
+        
+        printf("%s %.2f %.2f %.2f %.2f %s\n", estudantes[i].nome.c_str(), n1, n2, n3, estudantes[i].media, estudantes[i].situacao.c_str());
+    }
+    
+    printf("'''\n Aluno com maior média: %s (%.2f)"
+    , estMaiorMedia->nome.c_str(), estMaiorMedia->media);
+    
 
     return 0;
 }
