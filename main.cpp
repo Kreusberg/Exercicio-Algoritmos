@@ -76,12 +76,12 @@ int main()
         }
     }
     printf("''' \n");
-    cout<< left << setw(15) << "Nome"
-        << setw(8) << "Nota1"
-        << setw(8) << "Nota2"
-        << setw(8) << "Nota3"
-        << setw(10) << "Media"
-        << setw(12) << "Situacao" << endl;
+    cout<< left << setw(25) << "Nome"
+        << setw(8) << "Nota-1"
+        << setw(8) << "Nota-2"
+        << setw(8) << "Nota-3"
+        << setw(10) << "Média"
+        << setw(12) << "Situação" << endl;
     
     for (int i = 0; i < quant; i++) {
         double n1, n2, n3;
@@ -91,17 +91,16 @@ int main()
         n3 = estudantes[i].notas[2];
         
         cout<< fixed << setprecision(2)
-            << left << setw(15) << estudantes[i].nome.c_str()
+            << left << setw(25) << estudantes[i].nome.c_str()
             << setw(8) << n1
             << setw(8) << n2
             << setw(8) << n3 
-            << setw(10) << estudantes[i].media
+            << setw(9) << estudantes[i].media
             << setw(12) << estudantes[i].situacao.c_str() << endl;
     }
     
     printf("'''\nAluno com maior média: %s (%.2f)"
     , estMaiorMedia->nome.c_str(), estMaiorMedia->media);
-    
 
     return 0;
 }
